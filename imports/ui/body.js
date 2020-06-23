@@ -15,5 +15,16 @@ Template.body.events({
         event.preventDefault();
 
         // get value from element
+        const target = event.target;
+        const text = target.text.value;
+
+        // insert a task in to the collection
+        Tasks.insert({
+            text,
+            createdAt: new Date(), // current time
+        })
+
+        // clear form
+        target.text.value = '';
     }
 })
