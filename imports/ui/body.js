@@ -6,7 +6,7 @@ import './body.html';
 
 Template.body.helpers({
     tasks() {
-        return Tasks.find({});
+        return Tasks.find({}, {sort: {createdAt: -1 }});
     },
 });
 Template.body.events({
@@ -17,6 +17,7 @@ Template.body.events({
         // get value from element
         const target = event.target;
         const text = target.text.value;
+        console.log(event);
 
         // insert a task in to the collection
         Tasks.insert({
