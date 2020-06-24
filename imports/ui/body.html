@@ -1,15 +1,15 @@
 <body>
 <div class="container">
     <header>
-        <h1>Todo List ({{incompleteCount}})</h1>
-        ({{> loginButtons}})
+        <h1>Todo List {{incompleteCount}}</h1>
+        {{> loginButtons}}
 
 <!-- THIS FORM WILL ONLY SHOW UP IF THE USER IS LOGGED IN -->
-        ({{#if currentUser}})
+        {{#if currentUser}}
         <form class="new-task">
             <input type="text" name="text" placeholder="Add new tasks">
         </form>
-        ({{/if}})
+        {{/if}}
     </header>
 <!--CODE THAT ACTUALLY PRODUCES THE TASK DYNAMICALLY-->
     <ul>

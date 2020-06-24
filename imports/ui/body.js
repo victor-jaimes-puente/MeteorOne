@@ -40,14 +40,16 @@ Template.body.events({
         // insert a task in to the collection
         // here we are creating and modifying our DB, and
         // specifically our collection
-        Tasks.insert({
-            text,
-            createdAt: new Date(), // current time
-            owner: Meteor.user(),
-            username: Meteor.user().username,
-        })
-        console.log(Meteor.user());
-
+        // Tasks.insert({
+        //     text,
+        //     createdAt: new Date(), // current time
+        //     owner: Meteor.user(),
+        //     username: Meteor.user().username,
+        // })
+        // console.log(Meteor.user());
+// REPLACED THIS CODE WHICH WAS NOT SECURE ^^^ WITH FOLLOWING CODE WHICH
+// ENSURES USER IS AUTHORIZED TO MAKE THESE CHANGES TO THE COLLECTION
+        Meteor.call('tasks.insert', text);
         // clear form
         target.text.value = '';
     },
