@@ -3,23 +3,24 @@
     <header>
         <h1>Todo List ({{incompleteCount}})</h1>
         ({{> loginButtons}})
+
+<!-- THIS FORM WILL ONLY SHOW UP IF THE USER IS LOGGED IN -->
+        ({{#if currentUser}})
         <form class="new-task">
             <input type="text" name="text" placeholder="Add new tasks">
         </form>
+        ({{/if}})
     </header>
-
+<!--CODE THAT ACTUALLY PRODUCES THE TASK DYNAMICALLY-->
     <ul>
         {{#each tasks}}
             {{> task}}
         {{/each}}
     </ul>
+<!--CHECK BOX FOR HIDING COMPLETED-->
     <label class="hide-completed">
         <input type="checkbox" />
         Hide Completed Tasks
     </label>
 </div>
 </body>
-
-<!--<template name="task">-->
-<!--    <li>{{text}}</li>-->
-<!--</template>-->
