@@ -6,6 +6,12 @@ import { check } from 'meteor/check';
 // THIS ALLOWS US TO CREATE SECURE METHODS WHICH WILL BE CALLED BY THE CLIENT BUT
 // CAN ONLY BE ACCESSED IF THE CORRECT USER IS LOGGED IN.
 export const Tasks = new Mongo.Collection('tasks');
+if (Meteor.isServer) {
+    // This code only runs on the server
+    Meteor.publish('tasks', function tasksPublication() {
+        return Tasks.find();
+    });
+}
 Meteor.methods({
     'tasks.insert'(text) {
         check(text, String);
